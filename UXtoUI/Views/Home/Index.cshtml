@@ -1,0 +1,476 @@
+﻿@model HomepageDTO
+
+@{
+    //Layout = null;
+    ViewData["Title"] = "Home";
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<link href="@Url.Content("~/css/uitoux.css")" rel="stylesheet" />
+<style>
+
+    .bg-image {
+        background-repeat: no-repeat;
+        position: relative;
+    }
+
+    .bg-image1 {
+        /* background-image: url('Images/banner1.jpeg'); */
+        height: 100%;
+        width: 100%;
+        background-repeat: no-repeat;
+        position: relative;
+    }
+
+    .card-header {
+        padding: .5rem 1rem;
+        margin-bottom: 0;
+        background-color: none !important;
+        border-bottom: 0px solid !important;
+    }
+
+    .featured-products {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        border-bottom: 1px solid #e1e1e1;
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+    }
+
+        .featured-products h2 {
+            flex: 1;
+            margin: 0;
+            /* padding-bottom: 10px; */
+            /* border-bottom: 2px solid #333; */
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+    .nav-bar {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex: 1;
+        justify-content: flex-end;
+    }
+
+        .nav-bar .tab {
+            padding: 10px 15px;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            color: #555;
+        }
+
+            .nav-bar .tab.active {
+                background-color: #333;
+                color: #fff;
+            }
+
+        .nav-bar .arrows {
+            display: flex;
+            gap: 5px;
+        }
+
+        .nav-bar .arrow {
+            padding: 5px;
+            background-color: #00cc99;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .nav-bar .tab {
+            padding: 0px 5px;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            color: #555;
+        }
+
+    .text-container h5 {
+        color: white
+    }
+
+    .text-container h2 {
+        /* color:yellow; */
+    }
+
+    .star-rating {
+        display: flex;
+        align-items: center;
+    }
+
+    .star {
+        font-size: 24px;
+        color: #ccc; /* Default star color */
+        margin-right: 2px;
+    }
+
+        .star.filled {
+            color: #f5a623; /* Filled star color */
+        }
+
+    .banner {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-size: cover;
+        background-position: center;
+        height: 183px;
+        position: relative;
+        color: #fff;
+        margin: 4px 10px 4px;
+    }
+
+    .banner-content {
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 20px;
+        border-radius: 5px;
+        width: 100%;
+    }
+
+    .banner h5 {
+        font-size: 0.875rem;
+    }
+
+    .banner h2 {
+        font-size: 1.2rem;
+        color: #f7f700;
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+    }
+
+    .btn-primary {
+        background-color: red;
+        border-color: red;
+    }
+</style>
+
+
+
+
+@if (Model.Slides != null && Model.Slides != null && Model.Slides.Count > 0)
+{
+    @foreach (var item in Model.Slides)
+    {
+
+        <div class="mt-3 bg-image" style="display: flex; align-items: center; background-image: url('@Url.Content("~/Images/" + item.ImageName)');">
+            <div class="text-container">
+                <span>@Html.Raw(item.Header)</span>
+                <h2>@Html.Raw(item.Description)</h2>
+                <p>@Html.Raw(@item.Notes)</p>
+                <button class="button mt-3">Shop Now</button>
+            </div>
+        </div>
+    }
+}
+<div class="">
+    <div class="">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table class="border brand-table ">
+                        <tbody>
+                            @if (Model != null && Model.Brands != null && Model.Brands.Count > 0)
+                            {
+                                long count = 0;
+                                @foreach (var item in Model.Brands)
+                                {
+                                    if (count % 8 == 0)
+                                    {
+                                        <tr></tr>
+                                    }
+                                <td><img src="images/@item.BrandLogo" alt="@item.BrandName" class="brand-image"><h6>@item.BrandName</h6></td>
+                                    count++;
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <hr />
+    </div>
+</div>
+
+
+<div class="featured-products">
+    <h2>Featured Products</h2>
+    <div class="nav-bar">
+        <a href="#" class="tab active">All</a>
+        <a href="#" class="tab">Power Tools</a>
+        <a href="#" class="tab">Hand Tools</a>
+        <a href="#" class="tab">Plumbing</a>
+        <div class="arrows">
+            <div class="arrow">&lt;</div>
+            <div class="arrow">&gt;</div>
+        </div>
+    </div>
+</div>
+
+<div class="">
+    <div class="card-container">
+        @if (Model != null && Model.Products != null && Model.Products.Count > 0)
+        {
+            var FeaturedProducts = Model.Products.Where(p => p.ProductType == "Featured Products").ToList();
+
+            if (FeaturedProducts != null && FeaturedProducts.Count > 0)
+            {
+                @foreach (var item in FeaturedProducts)
+                {
+                    <div class="cards">
+                       @*  <div class="card-header">
+                            <span class="badge">HOT</span>
+                        </div> *@
+                        <div style="float:right;padding-right:10px;">
+                            <img src="~/Images/svg/quickview.svg" />
+                        </div>
+                        <div class="card-body">
+                            <img src="~/Images/@item.ImageName" alt="@item.ProductName" class="chevron custom-icon">
+                            <div class="row" style="text-align:left">
+                                <p class="sku">SKU: @item.ModelName</p>
+                                <h3>@item.ProductName</h3>
+                                <div class="rating">
+                                    <div class="star-rating">
+                                        @for (var i = 0; i < 5; i++)
+                                        {
+                                            if (i < @item.Rating)
+                                            {
+                                                <span class="star filled">&#9733;</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="star">&#9733;</span>
+                                            }
+                                        } @item.ProductRating reviews
+                                    </div>
+                                </div>
+                                <div>
+                                   
+                                    <span class="price">
+                                        $@item.Price @if (item.OrginalPrice > 0)
+                                        {
+                                            <strike>$@item.OrginalPrice</strike>
+                                        }
+                                    </span>
+                                    <span style="float:right;">
+                                        <img src="~/Images/svg/cart-20.svg" />
+                                    </span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                }
+            }
+        }
+
+    </div>
+</div>
+
+<div class="row banner-container mt-5">
+    @if (Model != null && Model.Banners != null && Model.Banners.Count > 0)
+    {
+
+        @foreach (var item in Model.Banners)
+        {
+            <div class="col-md-6">
+                <div class="banner mt-3" style="background-image: url('@Url.Content("~/Images/" + item.ImageName)');">
+                    <div class="banner-content">
+                        <h2>@Html.Raw(item.BannerDescription)</h2>
+                        <h5>@Html.Raw(item.BannerNotes)</h5>
+                        <button class="btn btn-primary mt-3">Shop Now</button>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>
+
+
+<div class="row mt-4 three-sections">
+
+    <div class="col-md-4">
+
+        <h1>Top Rated Products</h1>
+
+        @if (Model != null && Model.Products.Count > 0)
+        {
+            var FeaturedProducts = Model.Products.Where(p => p.ProductType == "Top Rated Products").ToList();
+
+            if (FeaturedProducts != null && FeaturedProducts.Count > 0)
+            {
+                @foreach (var item in FeaturedProducts)
+                {
+                    <div class="product">
+                        <img src="/Images/@item.ImageName" alt="@item.ProductName">
+                        <div class="product-details">
+                            <h2>@item.ProductName</h2>
+                            <div class="product-reviews-price">
+
+                                <div class="rating">
+                                    <div class="star-rating">
+                                        @for (var i = 0; i < 5; i++)
+                                        {
+                                            if (i < @item.Rating)
+                                            {
+                                                <span class="star filled">&#9733;</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="star">&#9733;</span>
+                                            }
+                                        } @item.ProductRating reviews
+                                    </div>
+                                </div>
+
+                                @* <p>⭐⭐⭐⭐⭐ 17 reviews</p> *@
+                                <p class="price">
+                                    $@item.Price @if (item.OrginalPrice > 0)
+                                    {
+                                        <strike>$@item.OrginalPrice</strike>
+                                    }
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        }
+
+    </div>
+
+    <div class="col-md-4">
+
+        <h1>Special Offers</h1>
+
+        @if (Model != null && Model.Products.Count > 0)
+        {
+            var FeaturedProducts = Model.Products.Where(p => p.ProductType == "Special Offers").ToList();
+
+            if (FeaturedProducts != null && FeaturedProducts.Count > 0)
+            {
+                @foreach (var item in FeaturedProducts)
+                {
+                    <div class="product">
+                        <img src="/Images/@item.ImageName" alt="@item.ProductName">
+                        <div class="product-details">
+                            <h2>@item.ProductName</h2>
+                            <div class="product-reviews-price">
+
+                                <div class="rating">
+                                    <div class="star-rating">
+                                        @for (var i = 0; i < 5; i++)
+                                        {
+                                            if (i < @item.Rating)
+                                            {
+                                                <span class="star filled">&#9733;</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="star">&#9733;</span>
+                                            }
+                                        } @item.ProductRating reviews
+                                    </div>
+                                </div>
+
+                                @* <p>⭐⭐⭐⭐⭐ 17 reviews</p> *@
+                                <p class="price">
+                                    $@item.Price @if (item.OrginalPrice > 0)
+                                    {
+                                        <strike>$@item.OrginalPrice</strike>
+                                    }
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        }
+    </div>
+    <div class="col-md-4">
+        <h1>Bestsellers</h1>
+        @if (Model != null && Model.Products.Count > 0)
+        {
+            var FeaturedProducts = Model.Products.Where(p => p.ProductType == "Bestsellers").ToList();
+
+            if (FeaturedProducts != null && FeaturedProducts.Count > 0)
+            {
+                @foreach (var item in FeaturedProducts)
+                {
+                    <div class="product">
+                        <img src="/Images/@item.ImageName" alt="@item.ProductName">
+                        <div class="product-details">
+                            <h2>@item.ProductName</h2>
+                            <div class="product-reviews-price">
+
+                                <div class="rating">
+                                    <div class="star-rating">
+                                        @for (var i = 0; i < 5; i++)
+                                        {
+                                            if (i < @item.Rating)
+                                            {
+                                                <span class="star filled">&#9733;</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="star">&#9733;</span>
+                                            }
+                                        } @item.ProductRating reviews
+                                    </div>
+                                </div>
+
+                                <p class="price">
+                                    $@item.Price @if (item.OrginalPrice > 0)
+                                    {
+                                        <strike>$@item.OrginalPrice</strike>
+                                    }
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        }
+    </div>
+</div>
+
+<div class="footer">
+    <div class="feature">
+        <img src="~/Images/svg/free-delivery.svg" alt="Free Shipping">
+        <div class="row">
+            <p>Free Shipping</p>
+            <p>For orders from $50</p>
+        </div>
+    </div>
+    <div class="feature">
+        <img src="~/Images/svg/24-hours.svg" alt="Support 24/7">
+        <div class="row">
+            <p>Support 24/7</p>
+            <p>Call us anytime</p>
+        </div>
+    </div>
+    <div class="feature">
+        <img src="~/Images/svg/payment-security.svg" alt="100% Safety">
+        <div class="row">
+            <p>100% Safety</p>
+            <p>Only secure payments</p>
+        </div>
+    </div>
+    <div class="feature">
+        <img src="~/Images/svg/tag.svg" alt="Hot Offers">
+        <div class="row">
+            <p>Hot Offers</p>
+            <p>Discounts up to 90%</p>
+        </div>
+    </div>
+</div>
+
+
+
+
+

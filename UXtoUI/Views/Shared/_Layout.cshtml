@@ -1,0 +1,243 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - UItoUX</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/UXtoUI.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <div class="container-fluid">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <ul class="nav-links">
+                                    <li><a href="#">About Us</a></li>
+                                    <li><a href="#">Contacts</a></li>
+                                    <li><a href="#">Store Location</a></li>
+                                    <li><a href="#">Track Order</a></li>
+                                    <li><a href="#">Blog</a></li>
+                                </ul>
+
+                            </div>
+                            <div class="col-md-6">
+                                <div class="top-bar">
+
+                                    <div class="currency-language mb-4">
+                                        <div>Compare:  <span>2</span></div>
+                                        <div>Currency: RS<i class="fas fa-chevron-down chevron custom-icon"></i></div>
+                                        <div>Language: EN<i class="fas fa-chevron-down chevron custom-icon"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <nav class="main-nav custom-row col-md-12">
+                            <div class="search-bar col-md-8 col-12">
+                                <div class="row">
+
+                                
+                                <div class="col-md-3 col-6">
+                                    <div class="logo">
+                                        <a href="#"><img src="~/images/logo.png" alt="Logo"></a>
+                                    </div>
+                                </div>
+                                <div class="col-md-4  col-6">
+                                    <label class="selectvehicle">
+                                        <img src="~/images/svg/car.svg" alt="Car Icon" class="car-icon">
+                                        <select id="selectVehicle">
+                                            <option>Select Vehicle</option>
+                                            <!-- Add your other options here -->
+                                        </select>
+                                    </label>
+                                </div>
+
+                                <div class="col-md-4 col-12">
+                                    <div class="search-container">
+                                        <input type="text" class="search" placeholder="Enter Keyword or Part Number">
+                                        <img src="~/images/svg/search.svg" alt="Search Icon">
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+
+                            <div class="cart-account col-md-8 mr-3">
+                                <div class="account-item">
+                                    <img src="~/images/svg/heart.svg" alt="Wishlist Icon">
+                                    @* <span class="count">0</span> *@
+                                </div>
+                                <div class="account-item">
+                                    <img src="~/images/svg/person.svg" alt="Account Icon">
+                                    <span>
+                                        <span class="login-text">Hello, Log In</span>
+                                        <span class="account-text">My Account</span>
+                                    </span>
+                                </div>
+                                <div class="account-item">
+                                    <img src="~/images/svg/cart.svg" alt="Cart Icon">
+                                    <span>
+                                        <span class="cart-text">Shopping Cart</span>
+                                        <span class="account-text">₹1468.60</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="card mt-3">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="navbarstyle">
+                            <ul class="navbar-nav d-flex flex-row align-items-center" id="navbar-nav">
+                                <li class="nav-item me-3">
+                                    <a class="nav-link menu-link active" href="#sidebarShopByCategory" data-bs-toggle="collapse" role="button" aria-expanded="true" aria-controls="sidebarShopByCategory">
+                                        <i class="fas fa-bars custom-icon"></i> <span>Shop By Category</span><i class="fas fa-chevron-down custom-icon" style="margin-left: 30px;
+"></i>
+                                    </a>
+                                </li>
+                                <li class="nav-item me-3">
+                                    <a class="nav-link menu-link" href="#sidebarHome">
+                                        <span class="chevron">Home</span><i class="fas fa-chevron-down chevron  custom-icon"></i>
+                                    </a>
+                                </li>
+                                <li class="nav-item me-3">
+                                    <a class="nav-link menu-link" href="#sidebarMegamenu">
+                                        <span>Megamenu</span><i class="fas fa-chevron-down chevron custom-icon"></i>
+                                    </a>
+                                </li>
+                                <li class="nav-item me-3">
+                                    <a class="nav-link menu-link" href="#sidebarShop">
+                                        <span>Shop</span><i class="fas fa-chevron-down chevron custom-icon"></i>
+                                    </a>
+                                </li>
+                                <li class="nav-item me-3">
+                                    <a class="nav-link menu-link" href="#sidebarBlog">
+                                        <span>Blog</span><i class="fas fa-chevron-down chevron custom-icon"></i>
+                                    </a>
+                                </li>
+                                <li class="nav-item me-3">
+                                    <a class="nav-link menu-link" href="#sidebarAccount">
+                                        <span>Account</span><i class="fas fa-chevron-down chevron custom-icon"></i>
+                                    </a>
+                                </li>
+                                <li class="nav-item me-3">
+                                    <a class="nav-link menu-link" href="#sidebarPages">
+                                        <span>Pages</span><i class="fas fa-chevron-down chevron custom-icon"></i>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link menu-link" href="#sidebarBuyTheme">
+                                        <span>Buy Theme</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item ms-auto">
+                                    <div><span class="callus">Call Us: </span><span>08925297807</span></div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add FontAwesome CDN or include FontAwesome in your project -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+
+    </header>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section contact-us">
+                <h3>Contact Us</h3>
+                <p>Hi, we are always open for cooperation and suggestions, contact us in one of the ways below:</p>
+                <p><strong>Phone Number</strong><br>089252 97807</p>
+                <p><strong>Email Address</strong><br>careers@uitouxsolutions.com</p>
+                <p><strong>Our Location</strong><br>102, Athipalayam Rd,<br>Ramakrishnapuram,<br>Chinnavedampatti, Coimbatore, Tamil Nadu 641049</p>
+                <p><strong>Working Hours</strong><br>Mon-Fri 10:00pm - 6:00pm</p>
+            </div>
+            <div class="footer-section information">
+                <h3>Information</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Delivery Information</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Brands</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Returns</a></li>
+                    <li><a href="#">Site Map</a></li>
+                </ul>
+            </div>
+            <div class="footer-section my-account">
+                <h3>My Account</h3>
+                <ul>
+                    <li><a href="#">Store Location</a></li>
+                    <li><a href="#">Order History</a></li>
+                    <li><a href="#">Wish List</a></li>
+                    <li><a href="#">Newsletter</a></li>
+                    <li><a href="#">Special Offers</a></li>
+                    <li><a href="#">Gift Certificates</a></li>
+                    <li><a href="#">Affiliate</a></li>
+                </ul>
+            </div>
+            <div class="footer-section newsletter">
+                <h3>Newsletter</h3>
+                <p>Enter your email address below to subscribe to our newsletter and keep up to date with discounts and special offers.</p>
+                <form>
+                    <input type="email" placeholder="user@example.com">
+                    <button type="submit">Subscribe</button>
+                </form>
+                <p>Follow us on social networks</p>
+                <div class="social-icons">
+                    <div href="https://www.facebook.com" target="_blank" class="facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </div>
+                    <div href="https://www.twitter.com" target="_blank" class="twitter">
+                        <i class="fab fa-twitter"></i>
+                    </div>
+                    <div href="https://www.youtube.com" target="_blank" class="youtube">
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                    <div href="https://www.instagram.com" target="_blank" class="instagram">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Powered by React / Next.js — Designed by UITOUX Solutions</p>
+            <img src="~/Images/payments.png" alt="Payments">
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
