@@ -1,0 +1,19 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/UItoUX/bin/Debug/net8.0
+/UItoUX/obj
+/UItoUX.DBEngine/bin/Debug/net8.0
+/UItoUX.DBEngine/obj
+/UItoUX.Framework/bin/Debug/net8.0
+/UItoUX.Framework/obj
+/UItoUX.Models/bin/Debug/net8.0
+/UItoUX.Models/obj
+/UItoUX.Repository/bin/Debug/net8.0
+/UItoUX.Repository/obj
+/UItoUX.Service/bin/Debug/net8.0
+/UItoUX.Service/obj
+/UXtoUI/bin/Debug/net8.0
+/UXtoUI/obj
