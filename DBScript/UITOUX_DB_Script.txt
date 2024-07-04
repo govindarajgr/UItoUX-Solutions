@@ -1,0 +1,684 @@
+CREATE DATABASE [UItoUX]
+GO
+
+Use UItoUX
+GO
+
+/****** Object:  Schema [Product]    Script Date: 04-07-2024 17:03:35 ******/
+CREATE SCHEMA [Product]
+GO
+/****** Object:  Schema [Support]    Script Date: 04-07-2024 17:03:35 ******/
+CREATE SCHEMA [Support]
+GO
+/****** Object:  Table [Product].[BannerDetails]    Script Date: 04-07-2024 17:03:35 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Product].[BannerDetails](
+	[BannerId] [int] IDENTITY(1,1) NOT NULL,
+	[BannerDescription] [varchar](50) NULL,
+	[BannerNotes] [varchar](500) NULL,
+	[BannerImages] [varchar](50) NULL,
+	[IsDeleted] [bit] NULL,
+	[CreatedDate] [datetime] NULL,
+	[CreatedBy] [int] NULL,
+ CONSTRAINT [PK_BannerDetails] PRIMARY KEY CLUSTERED 
+(
+	[BannerId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [Product].[BrandDetails]    Script Date: 04-07-2024 17:03:35 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Product].[BrandDetails](
+	[BrandId] [int] IDENTITY(1,1) NOT NULL,
+	[BrandName] [varchar](50) NULL,
+	[BrandLogo] [varchar](50) NULL,
+	[IsDeleted] [bit] NULL,
+	[CreatedOn] [datetime] NULL,
+ CONSTRAINT [PK_BrandDetails] PRIMARY KEY CLUSTERED 
+(
+	[BrandId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [Product].[ProductDetails]    Script Date: 04-07-2024 17:03:35 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Product].[ProductDetails](
+	[ProductId] [int] IDENTITY(1,1) NOT NULL,
+	[ProductName] [varchar](100) NULL,
+	[ModelName] [varchar](100) NULL,
+	[DiscountPrice] [decimal](18, 2) NULL,
+	[OrginalPrice] [decimal](18, 2) NULL,
+	[ImageName] [varchar](500) NULL,
+	[CreatedOn] [datetime] NULL,
+	[CreatedBy] [int] NULL,
+	[UpdatedOn] [datetime] NULL,
+	[UpdatedBy] [int] NULL,
+	[IsDeleted] [bit] NULL,
+ CONSTRAINT [PK_ProductDetails] PRIMARY KEY CLUSTERED 
+(
+	[ProductId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [Product].[ProductRatingDetails]    Script Date: 04-07-2024 17:03:35 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Product].[ProductRatingDetails](
+	[ProductRatingId] [int] IDENTITY(1,1) NOT NULL,
+	[ProductId] [int] NULL,
+	[Reviews] [varchar](500) NULL,
+	[Rating] [int] NULL,
+	[Isdeleted] [bit] NULL,
+	[InsertedDate] [datetime] NULL,
+ CONSTRAINT [PK_ProductRatingDetails] PRIMARY KEY CLUSTERED 
+(
+	[ProductRatingId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [Product].[ProductTypeDetails]    Script Date: 04-07-2024 17:03:35 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Product].[ProductTypeDetails](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[ProductId] [int] NULL,
+	[ProductTypeId] [int] NULL,
+	[IsDeleted] [bit] NULL,
+ CONSTRAINT [PK_ProductTypeDetails] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [Product].[SlideDetails]    Script Date: 04-07-2024 17:03:35 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Product].[SlideDetails](
+	[SlideId] [int] IDENTITY(1,1) NOT NULL,
+	[Header] [varchar](50) NULL,
+	[Description] [varchar](500) NULL,
+	[Notes] [varchar](500) NULL,
+	[SlideImage] [varchar](50) NULL,
+	[IsDeleted] [bit] NULL,
+	[CreatedDate] [datetime] NULL,
+	[CreatedBy] [int] NULL,
+ CONSTRAINT [PK_SlideDetails] PRIMARY KEY CLUSTERED 
+(
+	[SlideId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [Support].[ProductType]    Script Date: 04-07-2024 17:03:35 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Support].[ProductType](
+	[ProductTypeId] [int] IDENTITY(1,1) NOT NULL,
+	[ProductType] [varchar](100) NULL,
+	[IsDeleted] [bit] NULL,
+	[DisplayOrder] [int] NULL,
+ CONSTRAINT [PK_FetcherDetails] PRIMARY KEY CLUSTERED 
+(
+	[ProductTypeId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [Product].[BannerDetails] ON 
+GO
+INSERT [Product].[BannerDetails] ([BannerId], [BannerDescription], [BannerNotes], [BannerImages], [IsDeleted], [CreatedDate], [CreatedBy]) VALUES (1, N'MOTOR OILS', N'Synthetic motor oil with free shipping  <br/>  Friction free life guaranteed ', N'banner1.jpeg', 0, CAST(N'2024-07-03T21:12:25.610' AS DateTime), 1)
+GO
+INSERT [Product].[BannerDetails] ([BannerId], [BannerDescription], [BannerNotes], [BannerImages], [IsDeleted], [CreatedDate], [CreatedBy]) VALUES (2, N'SAVE UPTO $40', N'Luxurious interior part for real aesthetes <br/> Leather, fabric, ivory and more', N'banner2.jpeg', 0, CAST(N'2024-07-03T21:12:35.800' AS DateTime), 1)
+GO
+SET IDENTITY_INSERT [Product].[BannerDetails] OFF
+GO
+SET IDENTITY_INSERT [Product].[BrandDetails] ON 
+GO
+INSERT [Product].[BrandDetails] ([BrandId], [BrandName], [BrandLogo], [IsDeleted], [CreatedOn]) VALUES (1, N'AIMPARTS', N'brand-1.png', 0, CAST(N'2024-07-03T12:39:53.217' AS DateTime))
+GO
+INSERT [Product].[BrandDetails] ([BrandId], [BrandName], [BrandLogo], [IsDeleted], [CreatedOn]) VALUES (2, N'WINDENGINE', N'brand-2.png', 0, CAST(N'2024-07-03T12:39:53.217' AS DateTime))
+GO
+INSERT [Product].[BrandDetails] ([BrandId], [BrandName], [BrandLogo], [IsDeleted], [CreatedOn]) VALUES (3, N'TURBOELECTRIC', N'brand-3.png', 0, CAST(N'2024-07-03T12:39:53.217' AS DateTime))
+GO
+INSERT [Product].[BrandDetails] ([BrandId], [BrandName], [BrandLogo], [IsDeleted], [CreatedOn]) VALUES (4, N'STARTONE', N'brand-4.png', 0, CAST(N'2024-07-03T12:39:53.217' AS DateTime))
+GO
+INSERT [Product].[BrandDetails] ([BrandId], [BrandName], [BrandLogo], [IsDeleted], [CreatedOn]) VALUES (5, N'BRANDIX', N'brand-5.png', 0, CAST(N'2024-07-03T12:39:53.217' AS DateTime))
+GO
+INSERT [Product].[BrandDetails] ([BrandId], [BrandName], [BrandLogo], [IsDeleted], [CreatedOn]) VALUES (6, N'ABS-BRAND', N'brand-6.png', 0, CAST(N'2024-07-03T12:39:53.220' AS DateTime))
+GO
+INSERT [Product].[BrandDetails] ([BrandId], [BrandName], [BrandLogo], [IsDeleted], [CreatedOn]) VALUES (7, N'GREATCIRCLE', N'brand-7.png', 0, CAST(N'2024-07-03T12:39:53.220' AS DateTime))
+GO
+INSERT [Product].[BrandDetails] ([BrandId], [BrandName], [BrandLogo], [IsDeleted], [CreatedOn]) VALUES (8, N'JUSTROMB', N'brand-8.png', 0, CAST(N'2024-07-03T12:39:53.220' AS DateTime))
+GO
+INSERT [Product].[BrandDetails] ([BrandId], [BrandName], [BrandLogo], [IsDeleted], [CreatedOn]) VALUES (9, N'FASTWHEELS', N'brand-9.png', 0, CAST(N'2024-07-03T12:39:53.220' AS DateTime))
+GO
+INSERT [Product].[BrandDetails] ([BrandId], [BrandName], [BrandLogo], [IsDeleted], [CreatedOn]) VALUES (10, N'STROYKA-X', N'brand-10.png', 0, CAST(N'2024-07-03T12:39:53.220' AS DateTime))
+GO
+INSERT [Product].[BrandDetails] ([BrandId], [BrandName], [BrandLogo], [IsDeleted], [CreatedOn]) VALUES (11, N'MISSION-51', N'brand-11.png', 0, CAST(N'2024-07-03T12:39:53.220' AS DateTime))
+GO
+INSERT [Product].[BrandDetails] ([BrandId], [BrandName], [BrandLogo], [IsDeleted], [CreatedOn]) VALUES (12, N'FUELCORP', N'brand-12.png', 0, CAST(N'2024-07-03T12:39:53.220' AS DateTime))
+GO
+INSERT [Product].[BrandDetails] ([BrandId], [BrandName], [BrandLogo], [IsDeleted], [CreatedOn]) VALUES (13, N'REDGATE', N'brand-13.png', 0, CAST(N'2024-07-03T12:39:53.220' AS DateTime))
+GO
+INSERT [Product].[BrandDetails] ([BrandId], [BrandName], [BrandLogo], [IsDeleted], [CreatedOn]) VALUES (14, N'BLOCKS', N'brand-14.png', 0, CAST(N'2024-07-03T12:39:53.220' AS DateTime))
+GO
+INSERT [Product].[BrandDetails] ([BrandId], [BrandName], [BrandLogo], [IsDeleted], [CreatedOn]) VALUES (15, N'BLACKBOX', N'brand-15.png', 0, CAST(N'2024-07-03T12:39:53.220' AS DateTime))
+GO
+INSERT [Product].[BrandDetails] ([BrandId], [BrandName], [BrandLogo], [IsDeleted], [CreatedOn]) VALUES (16, N'SQUAREGARAGE', N'brand-16.png', 0, CAST(N'2024-07-03T12:39:53.220' AS DateTime))
+GO
+SET IDENTITY_INSERT [Product].[BrandDetails] OFF
+GO
+SET IDENTITY_INSERT [Product].[ProductDetails] ON 
+GO
+INSERT [Product].[ProductDetails] ([ProductId], [ProductName], [ModelName], [DiscountPrice], [OrginalPrice], [ImageName], [CreatedOn], [CreatedBy], [UpdatedOn], [UpdatedBy], [IsDeleted]) VALUES (1, N'Glossy Gray 19\'' Aluminium Wheel AR-19', N'A43-44328-B', CAST(0.00 AS Decimal(18, 2)), CAST(589.00 AS Decimal(18, 2)), N'product-1.jpeg', CAST(N'2024-07-03T09:50:00.143' AS DateTime), 1, NULL, NULL, 0)
+GO
+INSERT [Product].[ProductDetails] ([ProductId], [ProductName], [ModelName], [DiscountPrice], [OrginalPrice], [ImageName], [CreatedOn], [CreatedBy], [UpdatedOn], [UpdatedBy], [IsDeleted]) VALUES (2, N'Twin Exhaust Pipe From Brandix Z54', N'729-51203-B', CAST(0.00 AS Decimal(18, 2)), CAST(749.00 AS Decimal(18, 2)), N'product-2.jpeg', CAST(N'2024-07-03T09:50:00.143' AS DateTime), 1, NULL, NULL, 0)
+GO
+INSERT [Product].[ProductDetails] ([ProductId], [ProductName], [ModelName], [DiscountPrice], [OrginalPrice], [ImageName], [CreatedOn], [CreatedBy], [UpdatedOn], [UpdatedBy], [IsDeleted]) VALUES (3, N'Motor Oil Level 5', N'573-49386-C', CAST(0.00 AS Decimal(18, 2)), CAST(23.00 AS Decimal(18, 2)), N'product-3.jpeg', CAST(N'2024-07-03T09:50:00.143' AS DateTime), 1, NULL, NULL, 0)
+GO
+INSERT [Product].[ProductDetails] ([ProductId], [ProductName], [ModelName], [DiscountPrice], [OrginalPrice], [ImageName], [CreatedOn], [CreatedBy], [UpdatedOn], [UpdatedBy], [IsDeleted]) VALUES (4, N'Brandix Engine Block Z4', N'753-38573-B', CAST(452.00 AS Decimal(18, 2)), CAST(573.00 AS Decimal(18, 2)), N'product-4.jpeg', CAST(N'2024-07-03T09:50:00.143' AS DateTime), 1, NULL, NULL, 0)
+GO
+INSERT [Product].[ProductDetails] ([ProductId], [ProductName], [ModelName], [DiscountPrice], [OrginalPrice], [ImageName], [CreatedOn], [CreatedBy], [UpdatedOn], [UpdatedBy], [IsDeleted]) VALUES (5, N'Brandix Clutch Discs Z175', N'472-67382-Z', CAST(0.00 AS Decimal(18, 2)), CAST(345.00 AS Decimal(18, 2)), N'product-5.jpeg', CAST(N'2024-07-03T09:50:00.143' AS DateTime), 1, NULL, NULL, 0)
+GO
+INSERT [Product].[ProductDetails] ([ProductId], [ProductName], [ModelName], [DiscountPrice], [OrginalPrice], [ImageName], [CreatedOn], [CreatedBy], [UpdatedOn], [UpdatedBy], [IsDeleted]) VALUES (6, N'Fantastic 12-Stroke Engine With A Power of 1991 hp', N'A43-44328-M', CAST(0.00 AS Decimal(18, 2)), CAST(2579.00 AS Decimal(18, 2)), N'product-6.jpeg', CAST(N'2024-07-03T09:56:30.240' AS DateTime), 1, NULL, NULL, 0)
+GO
+INSERT [Product].[ProductDetails] ([ProductId], [ProductName], [ModelName], [DiscountPrice], [OrginalPrice], [ImageName], [CreatedOn], [CreatedBy], [UpdatedOn], [UpdatedBy], [IsDeleted]) VALUES (7, N'Brandix Manual Five Speed Gearbox', N'729-51203-M', CAST(0.00 AS Decimal(18, 2)), CAST(879.00 AS Decimal(18, 2)), N'product-9.jpeg', CAST(N'2024-07-03T09:56:30.240' AS DateTime), 1, NULL, NULL, 0)
+GO
+INSERT [Product].[ProductDetails] ([ProductId], [ProductName], [ModelName], [DiscountPrice], [OrginalPrice], [ImageName], [CreatedOn], [CreatedBy], [UpdatedOn], [UpdatedBy], [IsDeleted]) VALUES (8, N'Set of Four 19 Inch Spiked Tires', N'573-49386-M', CAST(0.00 AS Decimal(18, 2)), CAST(327.00 AS Decimal(18, 2)), N'product-7.jpeg', CAST(N'2024-07-03T09:56:30.240' AS DateTime), 1, NULL, NULL, 0)
+GO
+INSERT [Product].[ProductDetails] ([ProductId], [ProductName], [ModelName], [DiscountPrice], [OrginalPrice], [ImageName], [CreatedOn], [CreatedBy], [UpdatedOn], [UpdatedBy], [IsDeleted]) VALUES (9, N'Set of Car Floor Mats Brandix Z4', N'753-38573-M', CAST(78.00 AS Decimal(18, 2)), CAST(94.00 AS Decimal(18, 2)), N'product-10.jpeg', CAST(N'2024-07-03T09:56:30.240' AS DateTime), 1, NULL, NULL, 0)
+GO
+INSERT [Product].[ProductDetails] ([ProductId], [ProductName], [ModelName], [DiscountPrice], [OrginalPrice], [ImageName], [CreatedOn], [CreatedBy], [UpdatedOn], [UpdatedBy], [IsDeleted]) VALUES (10, N'40 Megawatt Low Beam Lamp', N'472-67382-M', CAST(4.00 AS Decimal(18, 2)), CAST(8.00 AS Decimal(18, 2)), N'product-8.jpeg', CAST(N'2024-07-03T09:56:30.240' AS DateTime), 1, NULL, NULL, 0)
+GO
+INSERT [Product].[ProductDetails] ([ProductId], [ProductName], [ModelName], [DiscountPrice], [OrginalPrice], [ImageName], [CreatedOn], [CreatedBy], [UpdatedOn], [UpdatedBy], [IsDeleted]) VALUES (11, N'Taillights Brandix Z54', N'472-67381-M', CAST(0.00 AS Decimal(18, 2)), CAST(60.00 AS Decimal(18, 2)), N'product-11.jpeg', CAST(N'2024-07-03T09:56:30.240' AS DateTime), 1, NULL, NULL, 0)
+GO
+SET IDENTITY_INSERT [Product].[ProductDetails] OFF
+GO
+SET IDENTITY_INSERT [Product].[ProductRatingDetails] ON 
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (1, 1, N'Good', 4, 0, CAST(N'2024-07-03T11:06:10.677' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (2, 1, N'Good', 4, 0, CAST(N'2024-07-03T11:06:10.677' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (3, 1, N'Good', 4, 0, CAST(N'2024-07-03T11:06:10.677' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (4, 1, N'Good', 4, 0, CAST(N'2024-07-03T11:06:10.677' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (5, 1, N'Good', 4, 0, CAST(N'2024-07-03T11:06:10.677' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (6, 1, N'Good', 4, 0, CAST(N'2024-07-03T11:06:10.677' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (7, 1, N'Good', 4, 0, CAST(N'2024-07-03T11:06:10.677' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (8, 1, N'Good', 4, 0, CAST(N'2024-07-03T11:06:10.677' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (9, 1, N'Good', 4, 0, CAST(N'2024-07-03T11:06:10.677' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (10, 1, N'Good', 5, 0, CAST(N'2024-07-03T11:06:10.677' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (11, 1, N'Good', 4, 0, CAST(N'2024-07-03T11:06:10.677' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (12, 1, N'Good', 4, 0, CAST(N'2024-07-03T11:06:10.677' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (13, 1, N'Good', 4, 0, CAST(N'2024-07-03T11:06:10.677' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (14, 1, N'Good', 4, 0, CAST(N'2024-07-03T11:06:10.677' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (15, 1, N'Good', 4, 0, CAST(N'2024-07-03T11:06:10.677' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (16, 1, N'Good', 4, 0, CAST(N'2024-07-03T11:06:10.677' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (17, 1, N'Good', 4, 0, CAST(N'2024-07-03T11:06:10.677' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (18, 1, N'Good', 4, 0, CAST(N'2024-07-03T11:06:10.677' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (19, 1, N'Good', 4, 0, CAST(N'2024-07-03T11:06:10.677' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (20, 1, N'Good', 5, 0, CAST(N'2024-07-03T11:06:10.677' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (21, 1, N'Good', 5, 0, CAST(N'2024-07-03T11:06:10.677' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (22, 1, N'Good', 5, 0, CAST(N'2024-07-03T11:06:10.677' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (23, 1, N'Good', 5, 0, CAST(N'2024-07-03T11:06:10.677' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (24, 1, N'Good', 5, 0, CAST(N'2024-07-03T11:06:10.677' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (25, 1, N'Good', 5, 0, CAST(N'2024-07-03T11:06:10.677' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (26, 1, N'Good', 5, 0, CAST(N'2024-07-03T11:06:16.807' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (27, 2, N'Good', 4, 0, CAST(N'2024-07-03T11:06:38.090' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (28, 2, N'Good', 4, 0, CAST(N'2024-07-03T11:06:38.090' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (29, 2, N'Good', 4, 0, CAST(N'2024-07-03T11:06:38.090' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (30, 2, N'Good', 4, 0, CAST(N'2024-07-03T11:06:38.090' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (31, 2, N'Good', 4, 0, CAST(N'2024-07-03T11:06:38.090' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (32, 2, N'Good', 4, 0, CAST(N'2024-07-03T11:06:38.090' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (33, 2, N'Good', 4, 0, CAST(N'2024-07-03T11:06:38.090' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (34, 2, N'Good', 5, 0, CAST(N'2024-07-03T11:06:38.090' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (35, 2, N'Good', 5, 0, CAST(N'2024-07-03T11:06:38.090' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (36, 3, N'Good', 5, 0, CAST(N'2024-07-03T11:06:52.097' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (37, 3, N'Good', 5, 0, CAST(N'2024-07-03T11:06:52.097' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (38, 5, N'Good', 3, 0, CAST(N'2024-07-03T11:07:06.843' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (39, 5, N'Good', 3, 0, CAST(N'2024-07-03T11:07:06.843' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (40, 5, N'Good', 3, 0, CAST(N'2024-07-03T11:07:06.843' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (41, 5, N'Good', 3, 0, CAST(N'2024-07-03T11:07:06.843' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (42, 5, N'Good', 3, 0, CAST(N'2024-07-03T11:07:06.843' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (43, 5, N'Good', 5, 0, CAST(N'2024-07-03T11:07:06.843' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (44, 5, N'Good', 5, 0, CAST(N'2024-07-03T11:07:06.843' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (45, 6, N'Good', 3, 0, CAST(N'2024-07-03T11:08:03.040' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (46, 6, N'Good', 3, 0, CAST(N'2024-07-03T11:08:03.040' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (47, 6, N'Good', 3, 0, CAST(N'2024-07-03T11:08:03.040' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (48, 6, N'Good', 3, 0, CAST(N'2024-07-03T11:08:03.040' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (49, 6, N'Good', 3, 0, CAST(N'2024-07-03T11:08:03.040' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (50, 6, N'Good', 3, 0, CAST(N'2024-07-03T11:08:03.040' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (51, 6, N'Good', 3, 0, CAST(N'2024-07-03T11:08:03.040' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (52, 6, N'Good', 3, 0, CAST(N'2024-07-03T11:08:03.040' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (53, 6, N'Good', 3, 0, CAST(N'2024-07-03T11:08:03.040' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (54, 6, N'Good', 5, 0, CAST(N'2024-07-03T11:08:03.040' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (55, 6, N'Good', 5, 0, CAST(N'2024-07-03T11:08:03.040' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (56, 6, N'Good', 5, 0, CAST(N'2024-07-03T11:08:03.040' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (57, 6, N'Good', 5, 0, CAST(N'2024-07-03T11:08:03.040' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (58, 6, N'Good', 5, 0, CAST(N'2024-07-03T11:08:03.040' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (59, 6, N'Good', 5, 0, CAST(N'2024-07-03T11:08:03.040' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (60, 6, N'Good', 5, 0, CAST(N'2024-07-03T11:08:03.040' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (61, 6, N'Good', 5, 0, CAST(N'2024-07-03T11:08:08.097' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (62, 7, N'Good', 4, 0, CAST(N'2024-07-03T11:08:20.973' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (63, 7, N'Good', 4, 0, CAST(N'2024-07-03T11:08:20.973' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (64, 7, N'Good', 4, 0, CAST(N'2024-07-03T11:08:20.973' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (65, 7, N'Good', 4, 0, CAST(N'2024-07-03T11:08:20.973' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (66, 7, N'Good', 4, 0, CAST(N'2024-07-03T11:08:20.973' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (67, 7, N'Good', 5, 0, CAST(N'2024-07-03T11:08:20.973' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (69, 8, N'Good', 4, 0, CAST(N'2024-07-03T11:08:45.047' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (70, 8, N'Good', 4, 0, CAST(N'2024-07-03T11:08:45.047' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (71, 8, N'Good', 4, 0, CAST(N'2024-07-03T11:08:45.047' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (72, 8, N'Good', 4, 0, CAST(N'2024-07-03T11:08:45.047' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (73, 8, N'Good', 5, 0, CAST(N'2024-07-03T11:08:45.047' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (74, 8, N'Good', 5, 0, CAST(N'2024-07-03T11:08:45.047' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (75, 8, N'Good', 5, 0, CAST(N'2024-07-03T11:08:45.047' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (76, 8, N'Good', 5, 0, CAST(N'2024-07-03T11:08:45.047' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (77, 8, N'Good', 5, 0, CAST(N'2024-07-03T11:08:45.047' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (78, 9, N'Good', 4, 0, CAST(N'2024-07-03T11:09:36.817' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (79, 9, N'Good', 4, 0, CAST(N'2024-07-03T11:09:36.817' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (80, 9, N'Good', 4, 0, CAST(N'2024-07-03T11:09:36.817' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (81, 9, N'Good', 4, 0, CAST(N'2024-07-03T11:09:36.817' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (82, 9, N'Good', 4, 0, CAST(N'2024-07-03T11:09:36.817' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (83, 9, N'Good', 4, 0, CAST(N'2024-07-03T11:09:36.817' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (84, 9, N'Good', 4, 0, CAST(N'2024-07-03T11:09:36.817' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (85, 9, N'Good', 4, 0, CAST(N'2024-07-03T11:09:36.817' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (86, 9, N'Good', 5, 0, CAST(N'2024-07-03T11:09:36.817' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (87, 9, N'Good', 5, 0, CAST(N'2024-07-03T11:09:36.817' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (88, 9, N'Good', 5, 0, CAST(N'2024-07-03T11:09:36.817' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (89, 9, N'Good', 5, 0, CAST(N'2024-07-03T11:09:36.817' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (90, 9, N'Good', 5, 0, CAST(N'2024-07-03T11:09:36.817' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (91, 9, N'Good', 5, 0, CAST(N'2024-07-03T11:09:36.817' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (92, 9, N'Good', 5, 0, CAST(N'2024-07-03T11:09:36.817' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (93, 9, N'Good', 5, 0, CAST(N'2024-07-03T11:09:36.817' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (94, 10, N'Good', 4, 0, CAST(N'2024-07-03T11:10:05.610' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (95, 10, N'Good', 4, 0, CAST(N'2024-07-03T11:10:05.610' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (96, 10, N'Good', 4, 0, CAST(N'2024-07-03T11:10:05.610' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (97, 10, N'Good', 4, 0, CAST(N'2024-07-03T11:10:05.610' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (98, 10, N'Good', 4, 0, CAST(N'2024-07-03T11:10:05.610' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (99, 10, N'Good', 4, 0, CAST(N'2024-07-03T11:10:05.610' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (100, 10, N'Good', 4, 0, CAST(N'2024-07-03T11:10:05.610' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (101, 10, N'Good', 4, 0, CAST(N'2024-07-03T11:10:05.610' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (102, 10, N'Good', 4, 0, CAST(N'2024-07-03T11:10:05.610' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (103, 10, N'Good', 4, 0, CAST(N'2024-07-03T11:10:05.610' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (104, 10, N'Good', 4, 0, CAST(N'2024-07-03T11:10:06.473' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (105, 10, N'Good', 4, 0, CAST(N'2024-07-03T11:10:06.473' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (106, 10, N'Good', 4, 0, CAST(N'2024-07-03T11:10:06.473' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (107, 10, N'Good', 4, 0, CAST(N'2024-07-03T11:10:06.473' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (108, 10, N'Good', 4, 0, CAST(N'2024-07-03T11:10:06.473' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (109, 10, N'Good', 4, 0, CAST(N'2024-07-03T11:10:06.473' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (110, 10, N'Good', 4, 0, CAST(N'2024-07-03T11:10:06.473' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (111, 10, N'Good', 4, 0, CAST(N'2024-07-03T11:10:06.473' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (112, 10, N'Good', 5, 0, CAST(N'2024-07-03T11:10:06.473' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (113, 10, N'Good', 5, 0, CAST(N'2024-07-03T11:10:06.473' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (114, 10, N'Good', 5, 0, CAST(N'2024-07-03T11:10:07.380' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (115, 10, N'Good', 5, 0, CAST(N'2024-07-03T11:10:07.380' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (116, 10, N'Good', 5, 0, CAST(N'2024-07-03T11:10:07.380' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (117, 10, N'Good', 5, 0, CAST(N'2024-07-03T11:10:07.380' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (118, 10, N'Good', 5, 0, CAST(N'2024-07-03T11:10:07.380' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (119, 10, N'Good', 5, 0, CAST(N'2024-07-03T11:10:07.380' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (120, 10, N'Good', 5, 0, CAST(N'2024-07-03T11:10:07.380' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (121, 10, N'Good', 5, 0, CAST(N'2024-07-03T11:10:07.380' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (122, 10, N'Good', 5, 0, CAST(N'2024-07-03T11:10:07.380' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (123, 10, N'Good', 5, 0, CAST(N'2024-07-03T11:10:07.380' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (124, 10, N'Good', 5, 0, CAST(N'2024-07-03T11:10:10.303' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (125, 11, N'Good', 2, 0, CAST(N'2024-07-03T11:10:25.217' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (126, 11, N'Good', 2, 0, CAST(N'2024-07-03T11:10:25.217' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (127, 11, N'Good', 2, 0, CAST(N'2024-07-03T11:10:25.217' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (128, 11, N'Good', 2, 0, CAST(N'2024-07-03T11:10:25.217' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (129, 11, N'Good', 2, 0, CAST(N'2024-07-03T11:10:25.217' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (130, 11, N'Good', 2, 0, CAST(N'2024-07-03T11:10:25.217' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (131, 11, N'Good', 5, 0, CAST(N'2024-07-03T11:10:25.217' AS DateTime))
+GO
+INSERT [Product].[ProductRatingDetails] ([ProductRatingId], [ProductId], [Reviews], [Rating], [Isdeleted], [InsertedDate]) VALUES (132, 11, N'Good', 5, 0, CAST(N'2024-07-03T11:10:25.217' AS DateTime))
+GO
+SET IDENTITY_INSERT [Product].[ProductRatingDetails] OFF
+GO
+SET IDENTITY_INSERT [Product].[ProductTypeDetails] ON 
+GO
+INSERT [Product].[ProductTypeDetails] ([Id], [ProductId], [ProductTypeId], [IsDeleted]) VALUES (1, 1, 1, 0)
+GO
+INSERT [Product].[ProductTypeDetails] ([Id], [ProductId], [ProductTypeId], [IsDeleted]) VALUES (2, 2, 1, 0)
+GO
+INSERT [Product].[ProductTypeDetails] ([Id], [ProductId], [ProductTypeId], [IsDeleted]) VALUES (3, 3, 1, 0)
+GO
+INSERT [Product].[ProductTypeDetails] ([Id], [ProductId], [ProductTypeId], [IsDeleted]) VALUES (4, 4, 1, 0)
+GO
+INSERT [Product].[ProductTypeDetails] ([Id], [ProductId], [ProductTypeId], [IsDeleted]) VALUES (5, 4, 4, 0)
+GO
+INSERT [Product].[ProductTypeDetails] ([Id], [ProductId], [ProductTypeId], [IsDeleted]) VALUES (6, 5, 1, 0)
+GO
+INSERT [Product].[ProductTypeDetails] ([Id], [ProductId], [ProductTypeId], [IsDeleted]) VALUES (7, 5, 4, 0)
+GO
+INSERT [Product].[ProductTypeDetails] ([Id], [ProductId], [ProductTypeId], [IsDeleted]) VALUES (8, 6, 2, 0)
+GO
+INSERT [Product].[ProductTypeDetails] ([Id], [ProductId], [ProductTypeId], [IsDeleted]) VALUES (9, 7, 3, 0)
+GO
+INSERT [Product].[ProductTypeDetails] ([Id], [ProductId], [ProductTypeId], [IsDeleted]) VALUES (10, 7, 4, 0)
+GO
+INSERT [Product].[ProductTypeDetails] ([Id], [ProductId], [ProductTypeId], [IsDeleted]) VALUES (11, 8, 2, 0)
+GO
+INSERT [Product].[ProductTypeDetails] ([Id], [ProductId], [ProductTypeId], [IsDeleted]) VALUES (12, 9, 3, 0)
+GO
+INSERT [Product].[ProductTypeDetails] ([Id], [ProductId], [ProductTypeId], [IsDeleted]) VALUES (13, 10, 2, 0)
+GO
+INSERT [Product].[ProductTypeDetails] ([Id], [ProductId], [ProductTypeId], [IsDeleted]) VALUES (14, 11, 3, 0)
+GO
+SET IDENTITY_INSERT [Product].[ProductTypeDetails] OFF
+GO
+SET IDENTITY_INSERT [Product].[SlideDetails] ON 
+GO
+INSERT [Product].[SlideDetails] ([SlideId], [Header], [Description], [Notes], [SlideImage], [IsDeleted], [CreatedDate], [CreatedBy]) VALUES (1, N'30% OFF', N'When Buying Parts With Installation ', N'Installation of parts  in the service of our partners.', N'slide-1.jpeg', 0, CAST(N'2024-07-03T21:12:25.610' AS DateTime), 1)
+GO
+SET IDENTITY_INSERT [Product].[SlideDetails] OFF
+GO
+SET IDENTITY_INSERT [Support].[ProductType] ON 
+GO
+INSERT [Support].[ProductType] ([ProductTypeId], [ProductType], [IsDeleted], [DisplayOrder]) VALUES (1, N'Featured Products', 0, 1)
+GO
+INSERT [Support].[ProductType] ([ProductTypeId], [ProductType], [IsDeleted], [DisplayOrder]) VALUES (2, N'Top Rated Products', 0, 2)
+GO
+INSERT [Support].[ProductType] ([ProductTypeId], [ProductType], [IsDeleted], [DisplayOrder]) VALUES (3, N'Special Offers', 0, 3)
+GO
+INSERT [Support].[ProductType] ([ProductTypeId], [ProductType], [IsDeleted], [DisplayOrder]) VALUES (4, N'Bestsellers', 0, 4)
+GO
+SET IDENTITY_INSERT [Support].[ProductType] OFF
+GO
+ALTER TABLE [Product].[BannerDetails] ADD  CONSTRAINT [DF_BannerDetails_IsDeleted]  DEFAULT ((0)) FOR [IsDeleted]
+GO
+ALTER TABLE [Product].[BannerDetails] ADD  CONSTRAINT [DF_BannerDetails_CreatedDate]  DEFAULT (getdate()) FOR [CreatedDate]
+GO
+ALTER TABLE [Product].[BrandDetails] ADD  CONSTRAINT [DF_BrandDetails_IsDeleted]  DEFAULT ((0)) FOR [IsDeleted]
+GO
+ALTER TABLE [Product].[BrandDetails] ADD  CONSTRAINT [DF_BrandDetails_CreatedOn]  DEFAULT (getdate()) FOR [CreatedOn]
+GO
+ALTER TABLE [Product].[ProductDetails] ADD  CONSTRAINT [DF_Table_1_CreatedDate]  DEFAULT (getdate()) FOR [CreatedOn]
+GO
+ALTER TABLE [Product].[ProductRatingDetails] ADD  CONSTRAINT [DF_ProductRatingDetails_Rating]  DEFAULT ((0)) FOR [Rating]
+GO
+ALTER TABLE [Product].[ProductRatingDetails] ADD  CONSTRAINT [DF_ProductRatingDetails_Isdeleted]  DEFAULT ((0)) FOR [Isdeleted]
+GO
+ALTER TABLE [Product].[ProductRatingDetails] ADD  CONSTRAINT [DF_ProductRatingDetails_InsertedDate]  DEFAULT (getdate()) FOR [InsertedDate]
+GO
+ALTER TABLE [Product].[ProductTypeDetails] ADD  CONSTRAINT [DF_ProductTypeDetails_IsDeleted]  DEFAULT ((0)) FOR [IsDeleted]
+GO
+ALTER TABLE [Product].[SlideDetails] ADD  CONSTRAINT [DF_SlideDetails_IsDeleted]  DEFAULT ((0)) FOR [IsDeleted]
+GO
+ALTER TABLE [Product].[SlideDetails] ADD  CONSTRAINT [DF_SlideDetails_CreatedDate]  DEFAULT (getdate()) FOR [CreatedDate]
+GO
+ALTER TABLE [Support].[ProductType] ADD  CONSTRAINT [DF_FetcherDetails_IsDeleted]  DEFAULT ((0)) FOR [IsDeleted]
+GO
+/****** Object:  StoredProcedure [Product].[FetchBrandDetails]    Script Date: 04-07-2024 17:03:35 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ -- =============================================
+-- Author     :   Govindaraj R
+-- Create date:   03/07/2024
+-- Description:   Retrieves Brand details 
+-- =============================================
+CREATE PROCEDURE [Product].[FetchBrandDetails]
+AS
+BEGIN
+    SELECT BrandId, BrandName, BrandLogo
+    FROM [Product].[BrandDetails]
+    WHERE IsDeleted = 0;
+END;
+GO
+/****** Object:  StoredProcedure [Product].[FetchHomepageDetails]    Script Date: 04-07-2024 17:03:35 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [Product].[FetchHomepageDetails]
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    BEGIN TRY
+        SET NOCOUNT ON;
+
+    -- Table[0] To get the Brand Details
+    SELECT 
+        BrandId,
+        BrandName,
+        BrandLogo
+    FROM 
+        [Product].[BrandDetails]
+    WHERE 
+        IsDeleted = 0;
+
+    -- Table[1] To get the Product Details
+    SELECT 
+        PD.ProductName,
+        PT.ProductType,
+        PD.ModelName,
+        PD.ImageName,
+        CASE 
+            WHEN PD.DiscountPrice > 0 THEN PD.DiscountPrice 
+            ELSE PD.OrginalPrice 
+        END AS Price,
+        CASE 
+            WHEN PD.DiscountPrice > 0 THEN PD.OrginalPrice 
+            ELSE 0 
+        END AS OrginalPrice,
+        ISNULL(PR.ProductRating, 0) AS ProductRating,
+        ISNULL(PR.Rating, 0) AS Rating
+    FROM 
+        [Product].[ProductTypeDetails] PTD
+    LEFT JOIN 
+        [Product].[ProductDetails] PD ON PTD.ProductId = PD.ProductId
+    LEFT JOIN 
+        [Support].[ProductType] PT ON PTD.ProductTypeId = PT.ProductTypeId
+    LEFT JOIN 
+        (
+            SELECT 
+                ProductId,
+                COUNT(ProductRatingId) AS ProductRating,
+                AVG(Rating) AS Rating 
+            FROM 
+                [Product].[ProductRatingDetails]
+            WHERE 
+                IsDeleted = 0
+            GROUP BY  
+                ProductId
+        ) PR ON PTD.ProductId = PR.ProductId
+    WHERE 
+        PTD.IsDeleted = 0  
+        AND PD.IsDeleted = 0 
+        AND PT.IsDeleted = 0
+    GROUP BY 
+        PD.ProductId,
+        PD.ProductName,
+        PT.ProductType,
+        PD.ImageName,
+        PD.ModelName,
+        PD.DiscountPrice,
+        PD.OrginalPrice,
+        PR.ProductRating,
+        PR.Rating,
+        PT.DisplayOrder
+    ORDER BY 
+        PT.DisplayOrder, 
+        PD.ProductId;
+
+    -- Table[3] To get the Slide Details
+    SELECT 
+        SlideId,
+        Header,
+        Description,
+        Notes,
+        SlideImage AS ImageName
+    FROM 
+        [Product].[SlideDetails]
+    WHERE 
+        IsDeleted = 0;
+
+    -- Table[4] To get the Banner Details
+    SELECT 
+        BannerId,
+        BannerDescription,
+        BannerNotes,
+        BannerImages AS ImageName
+    FROM 
+        [Product].[BannerDetails]
+    WHERE 
+        IsDeleted = 0;
+    END TRY
+    BEGIN CATCH
+        -- Error handling code
+        DECLARE @ErrorMessage NVARCHAR(4000);
+        DECLARE @ErrorSeverity INT;
+        DECLARE @ErrorState INT;
+
+        SELECT 
+            @ErrorMessage = ERROR_MESSAGE(),
+            @ErrorSeverity = ERROR_SEVERITY(),
+            @ErrorState = ERROR_STATE();
+
+        RAISERROR (@ErrorMessage, @ErrorSeverity, @ErrorState);
+    END CATCH
+END;
+Go
